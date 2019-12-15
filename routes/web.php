@@ -28,5 +28,6 @@ Route::post('productos/imagen/{producto}', 'ProductoController@imagen')->name('p
 Route::get('users/vendedores', 'UserController@sellers')->name('users.seller');
 Route::resource('users', 'UserController');
 Route::get('ventas/todas','VentaController@todas')->name('ventas.todas');
+Route::get('ventas/mias','VentaController@mias')->name('ventas.mias');
 Route::resource('ventas','VentaController');
 Route::resource('pagos','PagoController');

@@ -32,11 +32,11 @@ class ConfiguracionSeeder extends Seeder
             'numero'=>3
         ]);
         User::create([
-            'nombre'=>'Daniel',
-            'apellidoPaterno'=>'Morales',
-            'apellidoMaterno'=>'Ocampo',
-            'email'=>'dany@gmail.com',
-            'password'=>Hash::make('dany1234'),
+            'nombre'=>'Monica',
+            'apellidoPaterno'=>'Martinez',
+            'apellidoMaterno'=>'Nose',
+            'email'=>'moni@gmail.com',
+            'password'=>Hash::make('moni1234'),
             'sexo'=>1,
             'rol_id'=>1
         ]);

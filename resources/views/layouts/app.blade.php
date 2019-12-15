@@ -62,6 +62,12 @@
                                     <a class="nav-link" href="{{route('productos.index')}}">Productos</a>
                                 </li>
                             @endif
+                            @if(Auth::user()->rol->nombre=="Cliente")
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('ventas.mias')}}">Ventas</a>
+
+                                </li>
+                            @endif
                             @if(Auth::user()->rol->nombre=="Pagador")
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('pagos.index')}}">Pagos</a>

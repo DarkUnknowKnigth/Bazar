@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class VentaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -66,6 +70,11 @@ class VentaController extends Controller
     public function todas(){
         return view('ventas.show')->with([
             'ventas'=>Venta::where('comprador_id','=',auth()->user()->id)->get()
+        ]);
+    }
+    public function mias(){
+        return view('ventas.show')->with([
+            'ventas'=>Venta::where('vendedor_id','=',auth()->user()->id)->get()
         ]);
     }
 

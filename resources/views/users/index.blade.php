@@ -67,7 +67,7 @@
                             <div class="card-body">
                                 <ul>
                                     @forelse (\App\Venta::orderBy('updated_at','desc')->get() as $v)
-                                        <li>{{$v->comprador->fullname()}} compró un {{$v->producto->nombre}} a {{$v->vendedor->fullname()}} por <b>valor:{{$v->precioVenta}}</b></li>
+                                        <li>{{$v->comprador->fullname()}} compró x {{$v->cantidad}}  {{$v->producto->nombre}} a {{$v->vendedor->fullname()}} por <b>valor:{{$v->precioVenta}}</b></li>
                                     @empty
                                         <li>No hay ventas</li>
                                     @endforelse

@@ -100,7 +100,7 @@
                                     <form action="{{route('ventas.store')}}" method="post">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="number" class="form-control" onchange="document.getElementById('monto-{{$p->id}}').value=(this.value*parseFloat('{{$p->precioPropuesto}}')).toFixed(2)" name="cantidad" placeholder="cantidad" min="1" max="{{$p->disponibles}}">
+                                            <input type="number" class="form-control" onkeyup="document.getElementById('monto-{{$p->id}}').value=(this.value*parseFloat('{{$p->precioPropuesto}}')).toFixed(2)" name="cantidad" placeholder="cantidad" min="1" max="{{$p->disponibles}}">
                                             <input type="number" step="0.01" class="form-control" name="precioVenta" placeholder="monto" id="monto-{{$p->id}}">
                                             <button class="btn btn-success" type="submit">Ofertar</button>
                                         </div>
