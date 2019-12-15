@@ -164,18 +164,21 @@
                                                         <input type="file" class="form-control-file" id="foto" name="foto">
                                                     </div>
                                                 </form>
-                                                <ul>
-                                                    @foreach ($p->fotos as $f)
-                                                        <li>
-                                                            <form action="{{route('fotos.destroy',$f)}}" method="post">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <label>{{$f->path}}</label>
-                                                                <button class="btn btn-danger" type="submit">X</button>
-                                                            </form>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
+                                                @if(!$p->consignado)
+                                                    <ul>
+                                                        @foreach ($p->fotos as $f)
+                                                            <li>
+                                                                <form action="{{route('fotos.destroy',$f)}}" method="post">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <label>{{$f->path}}</label>
+                                                                    <button class="btn btn-danger" type="submit">X</button>
+                                                                </form>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                                <button disabled class="btn @if($p->consignado) btn-danger @else btn-success @endif">{{$p->consignado?'Consignado':'No consignado'}}</button>
                                             @endif
                                             @if(auth()->user()->rol->nombre=="Encargado")
                                                 @if(!$p->consignado)
@@ -189,7 +192,7 @@
                                                         <button class="btn btn-warning" type="submit">Actualizar</button>
                                                     </form>
                                                 @else
-                                                    <p>Consignado</p>
+                                                    <button disabled class="btn btn-danger">Coinsignado</button>
                                                 @endif
                                             @endif
                                         </div>

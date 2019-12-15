@@ -35,7 +35,7 @@
                                            {{$v->producto->nombre}}
                                         </td>
                                         <td>
-                                            {{$v->cantidad}}
+                                           {{$v->cantidad}}
                                         </td>
                                         <td>
                                            {{$v->precioVenta}}
@@ -44,6 +44,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{$ventas->links()}}
                     </div>
                 </div>
             </div>

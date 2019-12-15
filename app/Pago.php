@@ -9,9 +9,13 @@ class Pago extends Model
     protected $fillable=[
         'fecha',
         'monto',
-        'entregado'
+        'entregado',
+        'user_id'
     ];
-    public function vantas(){
+    public function ventas(){
         return $this->belongsToMany('App\Venta','pago_venta','pago_id','venta_id');
+    }
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 }

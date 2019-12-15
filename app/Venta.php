@@ -11,7 +11,8 @@ class Venta extends Model
         'precioVenta',
         'producto_id',
         'vendedor_id',
-        'comprador_id'
+        'comprador_id',
+        'cantidad'
     ];
     public function producto(){
         return $this->belongsTo('App\Producto');

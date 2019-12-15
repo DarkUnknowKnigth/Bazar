@@ -17,6 +17,7 @@ class CreateVentasTable extends Migration
             $table->bigIncrements('id');
             $table->date('fecha');
             $table->decimal('precioVenta');
+            $table->decimal('cantidad');
             $table->unsignedBigInteger('producto_id')->nullable();
             $table->unsignedBigInteger('vendedor_id')->nullable();
             $table->unsignedBigInteger('comprador_id')->nullable();

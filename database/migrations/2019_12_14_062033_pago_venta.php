@@ -16,7 +16,7 @@ class PagoVenta extends Migration
         Schema::create('pago_venta', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('pago_id');
-            $table->unsignedBigInteger('vanta_id');
+            $table->unsignedBigInteger('venta_id');
             $table->timestamps();
         });
     }

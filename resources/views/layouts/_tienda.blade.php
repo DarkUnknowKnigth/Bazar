@@ -3,7 +3,7 @@
         <div class="col-lg-3 col-xl-3 col-md-3">
             <div class="card">
                 <div class="card-header">
-                    <h1 class="my-4">Areas</h1>
+                    <h1 class="my-4"><a href="{{route('/')}}">Areas</a></h1>
                 </div>
                 <div class="card-body">
                     <div class="list-group">
@@ -57,8 +57,8 @@
             <br>
             <div class="row">
                 @forelse($productos as $p)
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
+                <div class="col-lg-3 col-xl-2 col-md-6 mb-4 col-sm-12">
+                    <div class="card">
                         <div id="carouselProduct{{$p->id}}" class="carousel slide my-4" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 @foreach ($p->fotos as $f)

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CompraProducto;
 use App\Pago;
+use App\Venta;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class PagoController extends Controller
 {
@@ -14,7 +19,10 @@ class PagoController extends Controller
      */
     public function index()
     {
-        //
+        return view('pagos.index')->with([
+            'pagos'=>Pago::join('pago_venta','pagos.id','pago_venta.pago_id')->join('ventas','pago_venta.venta_id','ventas.id')->where('user_id','=',auth()->user()->id)->orderBy('entregado')->get(),
+            'deudas'=>DB::select(DB::raw('SELECT *,(precioVenta-pagos) as saldo FROM ventas INNER JOIN (SELECT venta_id,SUM(monto) as pagos FROM pagos INNER JOIN pago_venta ON pagos.id = pago_venta.pago_id GROUP BY pago_venta.venta_id) x on ventas.id=venta_id'))
+        ]);
     }
 
     /**
@@ -35,7 +43,20 @@ class PagoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'monto'=>'numeric|required',
+            'venta_id'=>'numeric|required',
+        ]);
+        $pago=Pago::create([
+            'monto'=>$request->monto,
+            'fecha'=>Carbon::now()->toDateString(),
+            'entregado'=>0,
+            'user_id'=>auth()->user()->id
+        ]);
+        $pago->ventas()->attach($request->venta_id);
+        $venta=Venta::find($request->venta_id);
+        // Mail::to($venta->vendendor->user->email)->send(new CompraProducto($venta->vendedor,$venta->comprador,$venta->producto));
+        return redirect()->route('pagos.index');
     }
 
     /**
@@ -69,7 +90,10 @@ class PagoController extends Controller
      */
     public function update(Request $request, Pago $pago)
     {
-        //
+        if(!$pago->entregado){
+            $pago->update(['entregado'=>1]);
+        }
+        return redirect()->route('pagos.index');
     }
 
     /**

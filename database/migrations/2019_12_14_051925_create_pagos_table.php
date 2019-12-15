@@ -18,6 +18,7 @@ class CreatePagosTable extends Migration
             $table->date('fecha');
             $table->decimal('monto');
             $table->boolean('entregado');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

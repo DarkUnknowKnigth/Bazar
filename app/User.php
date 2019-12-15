@@ -54,4 +54,7 @@ class User extends Authenticatable
     public function rol(){
         return $this->belongsTo('App\Rol');
     }
+    public function pagos(){
+        return $this->hasMany('App\Pago');
+    }
 }
