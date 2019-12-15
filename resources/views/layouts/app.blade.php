@@ -64,7 +64,11 @@
                             @endif
                             @if(Auth::user()->rol->nombre=="Cliente")
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route('ventas.mias')}}">Ventas</a>
+                                    <a class="nav-link" href="{{route('ventas.mias')}}">Mis Ventas</a>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('ventas.todas')}}">Mis Compras</a>
 
                                 </li>
                             @endif

@@ -6,14 +6,16 @@
             </h4>
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-11 col-sm-12">
-                    <input class="form-control" type="text" name="query" id="query">
+            <form action="{{route('buscar')}}" method="get">
+                <div class="row">
+                    <div class="col-md-11 col-sm-12">
+                        <input class="form-control" type="text" name="nombre" id="nombre">
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <button class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
                 </div>
-                <div class="col-md-1 col-sm-12">
-                    <button class="btn btn-primary" type="submit">Buscar</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

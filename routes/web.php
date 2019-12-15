@@ -14,11 +14,16 @@
 use App\Producto;
 Route::get('/', function () {
     return view('welcome')->with([
-        'productos'=>Producto::all()
+        'productos'=>Producto::paginate()
     ]);
 })->name('/');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/buscar', function(){
+    return view('welcome')->with([
+        'productos'=>Producto::where('nombre','like','%'.request()->nombre.'%')->paginate()
+    ]);
+})->name('buscar');
 Route::get('/tienda', 'HomeController@tienda')->name('tienda');
 Route::put('areas/activar/{area}','AreaController@activar')->name('areas.activar');
 Route::resource('areas', 'AreaController')->except(['edit','create','destroy']);

@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        Compras
+                        Transacciones
                     </div>
                     <div class="card body">
                         <table class="table">

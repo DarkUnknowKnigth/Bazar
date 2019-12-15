@@ -57,7 +57,7 @@
             <br>
             <div class="row">
                 @forelse($productos as $p)
-                <div class="col-lg-3 col-xl-2 col-md-6 mb-4 col-sm-12">
+                <div class="col-lg-3 col-xl-3 col-md-6 mb-4 col-sm-12">
                     <div class="card">
                         <div id="carouselProduct{{$p->id}}" class="carousel slide my-4" data-ride="carousel">
                             <ol class="carousel-indicators">
@@ -122,6 +122,7 @@
                     </div>
                 </div>
                 @endforelse
+                {{$productos->links()}}
             </div>
             <!-- /.row -->
         </div>

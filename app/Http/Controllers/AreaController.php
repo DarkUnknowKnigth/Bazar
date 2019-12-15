@@ -60,7 +60,7 @@ class AreaController extends Controller
     public function show(Area $area)
     {
         return view('welcome')->with([
-            'productos'=>Producto::where('area_id','=',$area->id)->get()
+            'productos'=>Producto::where('area_id','=',$area->id)->paginate()
         ]);
     }
 
