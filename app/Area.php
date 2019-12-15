@@ -1,0 +1,13 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Area extends Model
+{
+    protected $fillable=['nombre','descripcion','activa'];
+    public function productos(){
+        return $this->hasMany('App\Producto');
+    }
+}
