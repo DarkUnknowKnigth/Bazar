@@ -102,12 +102,15 @@
                                         <div class="form-group">
                                             <input type="number" class="form-control" onkeyup="document.getElementById('monto-{{$p->id}}').value=(this.value*parseFloat('{{$p->precioPropuesto}}')).toFixed(2)" name="cantidad" placeholder="cantidad" min="1" max="{{$p->disponibles}}">
                                             <input type="number" step="0.01" class="form-control" name="precioVenta" placeholder="monto" id="monto-{{$p->id}}">
-                                            <button class="btn btn-success" type="submit">Ofertar</button>
+                                            @if($p->disponibles>0)
+                                                <button class="btn btn-success" type="submit">Comprar</button>
+                                            @else
+                                                <button class="btn btn-danger" disabled>Agotado</button>
+                                            @endif
                                         </div>
                                         <input type="number" name="producto_id" value="{{$p->id}}" hidden>
                                         <input type="number" name="vendedor_id" value="{{$p->user->id}}" hidden>
                                         <input type="number" name="comprador_id" value="{{auth()->user()->id}}" hidden>
-
                                     </form>
                                 @endif
                             @endguest

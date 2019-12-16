@@ -15,10 +15,8 @@
                                 <input class="form-control" type="number" step="0.01" placeholder="monto" name="monto" required>
                                 <select name="venta_id" class="form-control" required>
                                     <option value="">Selecciona tu compra</option>
-                                    @foreach (DB::select(DB::raw('SELECT *,(precioVenta-pagos) as saldo FROM ventas INNER JOIN (SELECT venta_id,SUM(monto) as pagos FROM pagos INNER JOIN pago_venta ON pagos.id = pago_venta.pago_id GROUP BY pago_venta.venta_id) x on ventas.id=venta_id')) as $v)
-                                        @if($v->saldo>0)
-                                            <option value="{{$v->venta_id}}">Compra:{{\App\User::find($v->comprador_id)->fullname()}} - Vende:{{\App\User::find($v->vendedor_id)->fullname()}} - Producto:{{\App\Producto::find($v->producto_id)->nombre}}- Saldo:{{$v->saldo}}</option>
-                                        @endif
+                                    @foreach (\App\Venta::all() as $v)
+                                        <option value="{{$v->id}}">Compra:{{\App\User::find($v->comprador_id)->fullname()}} - Vende:{{\App\User::find($v->vendedor_id)->fullname()}} - Producto:{{\App\Producto::find($v->producto_id)->nombre}} - ${{$v->precioVenta}}</option>
                                     @endforeach
                                 </select>
                             </div>
